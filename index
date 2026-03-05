@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>預拌遊樂園 🎡</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-orange: #f97316;
+            --primary-green: #10b981;
+            --sky-blue: #bae6fd;
+        }
+
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            background-color: var(--sky-blue);
+            overflow-x: hidden;
+            margin: 0;
+            letter-spacing: 0.05em;
+        }
+
+        /* 旋轉放射背景 */
+        .sunburst {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 200vmax;
+            height: 200vmax;
+            background: repeating-conic-gradient(
+                from 0deg,
+                #bae6fd 0deg 15deg,
+                #93e2ff 15deg 30deg
+            );
+            transform: translate(-50%, -50%);
+            opacity: 0.4;
+            z-index: -1;
+            animation: rotate-sunburst 80s linear infinite;
+        }
+
+        @keyframes rotate-sunburst {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* 票券切口造型 */
+        .ticket-shape {
+            position: relative;
+            background: white;
+            clip-path: polygon(
+                0% 0%, 100% 0%, 100% 40%, 95% 50%, 100% 60%, 100% 100%, 
+                0% 100%, 0% 60%, 5% 50%, 0% 40%
+            );
+        }
+
+        /* 卡通粗邊框 */
+        .cartoon-border {
+            border: 6px solid #333;
+            box-shadow: 12px 12px 0px 0px rgba(0,0,0,0.15);
+        }
+
+        /* 動態元素 */
+        .floating { animation: float 4s ease-in-out infinite; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(3deg); }
+        }
+
+        .bouncy-hover {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .bouncy-hover:hover {
+            transform: scale(1.05) rotate(-1.5deg);
+        }
+
+        /* 底部草地 */
+        .grass {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 90px;
+            background: #4ade80;
+            z-index: 5;
+            border-top: 8px solid #22c55e;
+        }
+
+        .flower {
+            position: absolute;
+            bottom: 25px;
+            font-size: 28px;
+            animation: sway 3s ease-in-out infinite;
+            filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.1));
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-8deg); }
+            50% { transform: rotate(12deg); }
+        }
+
+        .text-pop {
+            text-shadow: 
+                4px 4px 0 #fff,
+                -2px -2px 0 #fff,  
+                2px -2px 0 #fff,
+                -2px 4px 0 #fff,
+                2px 4px 0 #fff,
+                8px 8px 0px rgba(0,0,0,0.1);
+        }
+
+        .btn-cartoon {
+            transition: all 0.1s;
+            box-shadow: 0 8px 0px 0px var(--tw-shadow-color);
+        }
+        .btn-cartoon:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0px 0px var(--tw-shadow-color);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <div class="sunburst"></div>
+
+    <!-- 背景漂浮裝飾 -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden">
+        <span class="absolute text-5xl floating" style="top: 12%; left: 8%;">⭐</span>
+        <span class="absolute text-4xl floating" style="top: 35%; right: 12%; animation-delay: 1s;">✨</span>
+        <span class="absolute text-7xl floating" style="bottom: 25%; left: 3%; animation-delay: 1.5s;">🎈</span>
+        <span class="absolute text-5xl floating" style="top: 8%; right: 20%; animation-delay: 0.5s;">☁️</span>
+    </div>
+
+    <!-- 頂部標題區 -->
+    <header class="pt-16 pb-8 relative z-10 text-center px-4">
+        <div class="inline-block relative">
+            <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-72 h-14 bg-red-500 rounded-t-[3rem] border-4 border-b-0 border-black flex justify-around items-end px-6">
+                <div class="w-5 h-5 bg-yellow-300 rounded-full mb-1 animate-pulse"></div>
+                <div class="w-5 h-5 bg-yellow-300 rounded-full mb-1 animate-pulse" style="animation-delay: 0.3s"></div>
+                <div class="w-5 h-5 bg-yellow-300 rounded-full mb-1 animate-pulse" style="animation-delay: 0.6s"></div>
+            </div>
+            
+            <h1 class="text-7xl md:text-9xl font-[900] text-red-600 text-pop italic relative mb-4">
+                預拌遊樂園
+            </h1>
+            
+            <div class="bg-yellow-400 border-4 border-black px-8 py-3 rounded-2xl shadow-[6px_6px_0px_0px_#000] inline-block rotate-2 mt-2">
+                <span class="text-black font-[900] text-2xl tracking-widest">～ 歡迎光臨 ～</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- 遊戲主舞台 -->
+    <main class="flex-grow flex items-center justify-center p-6 relative z-20 mb-28 mt-8">
+        <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-16">
+            
+            <!-- 遊戲 1: 大富翁 -->
+            <div class="group bouncy-hover">
+                <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
+                    <div class="h-60 bg-orange-400 flex items-center justify-center relative border-b-4 border-black border-dashed">
+                        <!-- 自定義圖標 -->
+                        <svg viewBox="0 0 200 200" class="w-44 h-44 drop-shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
+                            <rect x="50" y="60" width="100" height="100" rx="20" fill="#fff" stroke="#333" stroke-width="10"/>
+                            <circle cx="80" cy="90" r="12" fill="#f97316"/>
+                            <circle cx="120" cy="130" r="12" fill="#f97316"/>
+                            <path d="M100 20 L140 65 L60 65 Z" fill="#ef4444" stroke="#333" stroke-width="6"/>
+                            <path d="M40 160 L160 160" stroke="#333" stroke-width="14" stroke-linecap="round"/>
+                        </svg>
+                        <div class="absolute top-6 right-10 bg-black text-white px-4 py-1 font-[900] text-lg transform rotate-12">經營策略</div>
+                    </div>
+                    <div class="p-10 text-center flex-grow flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-4xl font-[900] text-gray-800 mb-3">預拌大富翁</h2>
+                            <p class="text-orange-600 font-[700] mb-8 text-lg leading-relaxed px-4">
+                                結合預拌廠營運與大富翁經典玩法，透過娛樂方式學習預拌設備知識
+                            </p>
+                        </div>
+                        <a href="https://twr1991-bot.github.io/Monopoly-game/" 
+                           class="btn-cartoon block w-full bg-orange-500 text-white py-5 rounded-2xl font-[900] text-3xl shadow-orange-800 active:bg-orange-600">
+                            出發囉 ➔
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 遊戲 2: 對對碰 -->
+            <div class="group bouncy-hover">
+                <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
+                    <div class="h-60 bg-emerald-400 flex items-center justify-center relative border-b-4 border-black border-dashed">
+                        <!-- 自定義圖標 -->
+                        <svg viewBox="0 0 200 200" class="w-44 h-44 drop-shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
+                            <rect x="40" y="40" width="75" height="110" rx="15" fill="#fff" stroke="#333" stroke-width="10" transform="rotate(-15 75 95)"/>
+                            <rect x="85" y="45" width="75" height="110" rx="15" fill="#fff" stroke="#333" stroke-width="10" transform="rotate(15 125 100)"/>
+                            <circle cx="70" cy="90" r="18" fill="#3b82f6"/>
+                            <circle cx="130" cy="100" r="18" fill="#3b82f6"/>
+                            <path d="M100 70 Q115 50 130 70" fill="none" stroke="#10b981" stroke-width="10" stroke-linecap="round"/>
+                        </svg>
+                        <div class="absolute top-6 right-10 bg-black text-white px-4 py-1 font-[900] text-lg transform -rotate-6">記憶挑戰</div>
+                    </div>
+                    <div class="p-10 text-center flex-grow flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-4xl font-[900] text-gray-800 mb-3">設備對對碰</h2>
+                            <p class="text-emerald-600 font-[700] mb-8 text-lg leading-relaxed px-4">
+                                預拌設備多重複雜搭配記憶的遊戲方式，讓你真正感受精神衰弱，再也忘不掉設備的樣子
+                            </p>
+                        </div>
+                        <a href="https://twr1991-bot.github.io/Turn-Cards-game/" 
+                           class="btn-cartoon block w-full bg-emerald-500 text-white py-5 rounded-2xl font-[900] text-3xl shadow-emerald-800 active:bg-emerald-600">
+                            開始玩 ➔
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- 底部草地 -->
+    <div class="grass">
+        <span class="flower" style="left: 10%;">🌻</span>
+        <span class="flower" style="left: 28%; animation-delay: 0.5s;">🌷</span>
+        <span class="flower" style="left: 45%; animation-delay: 1.2s;">🌼</span>
+        <span class="flower" style="left: 62%; animation-delay: 0.3s;">🌸</span>
+        <span class="flower" style="left: 78%; animation-delay: 0.8s;">🌻</span>
+        <span class="flower" style="left: 92%; animation-delay: 1.5s;">🌷</span>
+    </div>
+
+    <!-- 頁腳 -->
+    <footer class="relative z-20 pb-24 text-center">
+        <div class="inline-block bg-white/90 backdrop-blur-sm border-4 border-black px-6 py-2 rounded-full cartoon-shadow">
+            <p class="text-blue-900 font-[900] text-base">
+                ✨ 2024 READY-MIX PARK | 陪你度過快樂時光 ✨
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
