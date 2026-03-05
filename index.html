@@ -54,13 +54,11 @@
             );
         }
 
-        /* 卡通粗邊框 */
         .cartoon-border {
             border: 6px solid #333;
             box-shadow: 12px 12px 0px 0px rgba(0,0,0,0.15);
         }
 
-        /* 動態元素 */
         .floating { animation: float 4s ease-in-out infinite; }
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -74,7 +72,6 @@
             transform: scale(1.05) rotate(-1.5deg);
         }
 
-        /* 底部草地 */
         .grass {
             position: fixed;
             bottom: 0;
@@ -115,6 +112,18 @@
         .btn-cartoon:active {
             transform: translateY(4px);
             box-shadow: 0 4px 0px 0px var(--tw-shadow-color);
+        }
+
+        /* 遊戲全螢幕容器 */
+        #game-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 100;
         }
     </style>
 </head>
@@ -157,7 +166,6 @@
             <div class="group bouncy-hover">
                 <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
                     <div class="h-60 bg-orange-400 flex items-center justify-center relative border-b-4 border-black border-dashed">
-                        <!-- 自定義圖標 -->
                         <svg viewBox="0 0 200 200" class="w-44 h-44 drop-shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
                             <rect x="50" y="60" width="100" height="100" rx="20" fill="#fff" stroke="#333" stroke-width="10"/>
                             <circle cx="80" cy="90" r="12" fill="#f97316"/>
@@ -174,10 +182,10 @@
                                 結合預拌廠營運與大富翁經典玩法，透過娛樂方式學習預拌設備知識
                             </p>
                         </div>
-                        <a href="https://twr1991-bot.github.io/Monopoly-game/" 
+                        <button onclick="openGame('https://twr1991-bot.github.io/Monopoly-game/')" 
                            class="btn-cartoon block w-full bg-orange-500 text-white py-5 rounded-2xl font-[900] text-3xl shadow-orange-800 active:bg-orange-600">
                             出發囉 ➔
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -186,7 +194,6 @@
             <div class="group bouncy-hover">
                 <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
                     <div class="h-60 bg-emerald-400 flex items-center justify-center relative border-b-4 border-black border-dashed">
-                        <!-- 自定義圖標 -->
                         <svg viewBox="0 0 200 200" class="w-44 h-44 drop-shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
                             <rect x="40" y="40" width="75" height="110" rx="15" fill="#fff" stroke="#333" stroke-width="10" transform="rotate(-15 75 95)"/>
                             <rect x="85" y="45" width="75" height="110" rx="15" fill="#fff" stroke="#333" stroke-width="10" transform="rotate(15 125 100)"/>
@@ -203,10 +210,10 @@
                                 預拌設備多重複雜搭配記憶的遊戲方式，讓你真正感受精神衰弱，再也忘不掉設備的樣子
                             </p>
                         </div>
-                        <a href="https://twr1991-bot.github.io/Turn-Cards-game/" 
+                        <button onclick="openGame('https://twr1991-bot.github.io/Turn-Cards-game/')" 
                            class="btn-cartoon block w-full bg-emerald-500 text-white py-5 rounded-2xl font-[900] text-3xl shadow-emerald-800 active:bg-emerald-600">
                             開始玩 ➔
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -232,6 +239,40 @@
             </p>
         </div>
     </footer>
+
+    <!-- 全螢幕遊戲覆蓋層 -->
+    <div id="game-overlay">
+        <!-- 頂部返回列 -->
+        <div class="h-16 bg-yellow-400 border-b-4 border-black flex items-center justify-between px-6 z-[101]">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl">🎡</span>
+                <span class="font-[900] text-lg">預拌遊樂園 - 正在遊玩</span>
+            </div>
+            <button onclick="closeGame()" class="bg-red-500 text-white font-[900] px-6 py-2 rounded-full border-4 border-black shadow-[4px_4px_0px_0px_#000] hover:translate-y-1 active:shadow-none transition-all">
+                返回大廳 ➔
+            </button>
+        </div>
+        <!-- 遊戲主體 -->
+        <iframe id="game-frame" src="" class="w-full h-[calc(100%-64px)] border-none"></iframe>
+    </div>
+
+    <script>
+        function openGame(url) {
+            const overlay = document.getElementById('game-overlay');
+            const iframe = document.getElementById('game-frame');
+            iframe.src = url;
+            overlay.style.display = 'block';
+            document.body.style.overflow = 'hidden'; // 防止背景滾動
+        }
+
+        function closeGame() {
+            const overlay = document.getElementById('game-overlay');
+            const iframe = document.getElementById('game-frame');
+            iframe.src = ''; // 停止遊戲
+            overlay.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    </script>
 
 </body>
 </html>
