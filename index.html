@@ -218,7 +218,7 @@
                 </div>
             </div>
 
-            <!-- 遊戲 3: 混凝土特調飲料店 -->
+            <!-- 遊戲 3: 混凝土特調飲料店 (更新：裝修中) -->
             <div class="group bouncy-hover">
                 <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
                     <div class="h-60 bg-purple-400 flex items-center justify-center relative border-b-4 border-black border-dashed">
@@ -230,7 +230,7 @@
                             <circle cx="110" cy="110" r="10" fill="#64748b"/>
                             <circle cx="85" cy="130" r="10" fill="#64748b"/>
                         </svg>
-                        <div class="absolute top-6 right-10 bg-gray-800 text-white px-4 py-1 font-[900] text-lg transform rotate-6">開發中</div>
+                        <div class="absolute top-6 right-10 bg-gray-800 text-white px-4 py-1 font-[900] text-lg transform rotate-6">裝修中</div>
                     </div>
                     <div class="p-10 text-center flex-grow flex flex-col justify-between">
                         <div>
@@ -241,7 +241,7 @@
                         </div>
                         <button onclick="openGame('#')" 
                            class="btn-cartoon block w-full bg-gray-400 text-white py-4 rounded-2xl font-[900] text-2xl shadow-gray-600 cursor-not-allowed">
-                            開發中...
+                            即將開幕
                         </button>
                     </div>
                 </div>
@@ -251,7 +251,6 @@
             <div class="group bouncy-hover">
                 <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
                     <div class="h-60 bg-blue-400 flex items-center justify-center relative border-b-4 border-black border-dashed">
-                        <!-- 自定義圖標：鋼材與地球 -->
                         <svg viewBox="0 0 200 200" class="w-44 h-44 drop-shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
                             <circle cx="100" cy="100" r="70" fill="#3b82f6" stroke="#333" stroke-width="8"/>
                             <rect x="70" y="70" width="60" height="60" fill="#cbd5e1" stroke="#333" stroke-width="8"/>
@@ -278,7 +277,6 @@
             <div class="group bouncy-hover">
                 <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
                     <div class="h-60 bg-yellow-600 flex items-center justify-center relative border-b-4 border-black border-dashed">
-                        <!-- 自定義圖標：空壓缸與石頭 -->
                         <svg viewBox="0 0 200 200" class="w-44 h-44 drop-shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
                             <rect x="60" y="70" width="80" height="40" rx="10" fill="#e5e7eb" stroke="#333" stroke-width="8"/>
                             <circle cx="75" cy="90" r="10" fill="#9ca3af"/>
@@ -306,7 +304,6 @@
             <div class="group bouncy-hover">
                 <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
                     <div class="h-60 bg-cyan-400 flex items-center justify-center relative border-b-4 border-black border-dashed">
-                        <!-- 自定義圖標：黃色小鴨與板手 -->
                         <svg viewBox="0 0 200 200" class="w-44 h-44 drop-shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
                             <path d="M70 100 Q70 60 110 60 Q150 60 150 100 Q150 130 110 130 Q70 130 70 100" fill="#facc15" stroke="#333" stroke-width="5"/>
                             <path d="M150 85 L170 85 L170 95 L150 95 Z" fill="#fb923c" stroke="#333" stroke-width="2"/>
@@ -354,7 +351,6 @@
 
     <!-- 全螢幕遊戲覆蓋層 -->
     <div id="game-overlay">
-        <!-- 頂部返回列 -->
         <div class="h-16 bg-yellow-400 border-b-4 border-black flex items-center justify-between px-6 z-[101]">
             <div class="flex items-center space-x-2">
                 <span class="text-2xl">🎡</span>
@@ -364,14 +360,13 @@
                 返回大廳 ➔
             </button>
         </div>
-        <!-- 遊戲主體 -->
         <iframe id="game-frame" src="" class="w-full h-[calc(100%-64px)] border-none"></iframe>
     </div>
 
     <script>
         function openGame(url) {
             if (url === '#') {
-                alert('這個遊樂設施正在維修中（開發中），敬請期待！');
+                alert('這個遊樂設施正在裝修或維護中，敬請期待！');
                 return;
             }
             const overlay = document.getElementById('game-overlay');
