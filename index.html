@@ -222,7 +222,6 @@
             <div class="group bouncy-hover">
                 <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
                     <div class="h-60 bg-purple-400 flex items-center justify-center relative border-b-4 border-black border-dashed">
-                        <!-- 自定義圖標：特調飲料 -->
                         <svg viewBox="0 0 200 200" class="w-44 h-44 drop-shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
                             <path d="M60 40 L140 40 L125 160 L75 160 Z" fill="#fff" stroke="#333" stroke-width="10"/>
                             <path d="M68 55 L132 55 L120 145 L80 145 Z" fill="#94a3b8" />
@@ -231,7 +230,7 @@
                             <circle cx="110" cy="110" r="10" fill="#64748b"/>
                             <circle cx="85" cy="130" r="10" fill="#64748b"/>
                         </svg>
-                        <div class="absolute top-6 right-10 bg-black text-white px-4 py-1 font-[900] text-lg transform rotate-6">烹飪模擬</div>
+                        <div class="absolute top-6 right-10 bg-gray-800 text-white px-4 py-1 font-[900] text-lg transform rotate-6">開發中</div>
                     </div>
                     <div class="p-10 text-center flex-grow flex flex-col justify-between">
                         <div>
@@ -241,8 +240,91 @@
                             </p>
                         </div>
                         <button onclick="openGame('#')" 
-                           class="btn-cartoon block w-full bg-purple-500 text-white py-4 rounded-2xl font-[900] text-2xl shadow-purple-800 active:bg-purple-600">
-                            開張囉 ➔
+                           class="btn-cartoon block w-full bg-gray-400 text-white py-4 rounded-2xl font-[900] text-2xl shadow-gray-600 cursor-not-allowed">
+                            開發中...
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 遊戲 4: 鋼材拼裝廠 -->
+            <div class="group bouncy-hover">
+                <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
+                    <div class="h-60 bg-blue-400 flex items-center justify-center relative border-b-4 border-black border-dashed">
+                        <!-- 自定義圖標：鋼材與地球 -->
+                        <svg viewBox="0 0 200 200" class="w-44 h-44 drop-shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
+                            <circle cx="100" cy="100" r="70" fill="#3b82f6" stroke="#333" stroke-width="8"/>
+                            <rect x="70" y="70" width="60" height="60" fill="#cbd5e1" stroke="#333" stroke-width="8"/>
+                            <path d="M70 70 L130 130 M130 70 L70 130" stroke="#333" stroke-width="4"/>
+                        </svg>
+                        <div class="absolute top-6 right-10 bg-gray-800 text-white px-4 py-1 font-[900] text-lg transform -rotate-12">開發中</div>
+                    </div>
+                    <div class="p-10 text-center flex-grow flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-3xl font-[900] text-gray-800 mb-3">鋼材拼裝廠</h2>
+                            <p class="text-blue-600 font-[700] mb-8 text-base leading-relaxed px-2">
+                                關於鐵材學習，工程師正在全球收集最硬的鋼材方塊，遊戲環遊世界回來就好了！
+                            </p>
+                        </div>
+                        <button onclick="openGame('#')" 
+                           class="btn-cartoon block w-full bg-gray-400 text-white py-4 rounded-2xl font-[900] text-2xl shadow-gray-600 cursor-not-allowed">
+                            收集鋼材中
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 遊戲 5: 補給小賣部 -->
+            <div class="group bouncy-hover">
+                <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
+                    <div class="h-60 bg-yellow-600 flex items-center justify-center relative border-b-4 border-black border-dashed">
+                        <!-- 自定義圖標：空壓缸與石頭 -->
+                        <svg viewBox="0 0 200 200" class="w-44 h-44 drop-shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
+                            <rect x="60" y="70" width="80" height="40" rx="10" fill="#e5e7eb" stroke="#333" stroke-width="8"/>
+                            <circle cx="75" cy="90" r="10" fill="#9ca3af"/>
+                            <path d="M140 90 L170 90" stroke="#333" stroke-width="12" stroke-linecap="round"/>
+                            <path d="M40 140 Q100 120 160 140" stroke="#78350f" stroke-width="10" fill="none"/>
+                        </svg>
+                        <div class="absolute top-6 right-10 bg-gray-800 text-white px-4 py-1 font-[900] text-lg transform rotate-6">開發中</div>
+                    </div>
+                    <div class="p-10 text-center flex-grow flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-3xl font-[900] text-gray-800 mb-3">補給小賣部</h2>
+                            <p class="text-yellow-700 font-[700] mb-8 text-base leading-relaxed px-2">
+                                關於市購品，空壓缸穿越到石器時代，我們正在修復時光機！
+                            </p>
+                        </div>
+                        <button onclick="openGame('#')" 
+                           class="btn-cartoon block w-full bg-gray-400 text-white py-4 rounded-2xl font-[900] text-2xl shadow-gray-600 cursor-not-allowed">
+                            修復時光機
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 遊戲 6: 五金尋寶隊 -->
+            <div class="group bouncy-hover">
+                <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
+                    <div class="h-60 bg-cyan-400 flex items-center justify-center relative border-b-4 border-black border-dashed">
+                        <!-- 自定義圖標：黃色小鴨與板手 -->
+                        <svg viewBox="0 0 200 200" class="w-44 h-44 drop-shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
+                            <path d="M70 100 Q70 60 110 60 Q150 60 150 100 Q150 130 110 130 Q70 130 70 100" fill="#facc15" stroke="#333" stroke-width="5"/>
+                            <path d="M150 85 L170 85 L170 95 L150 95 Z" fill="#fb923c" stroke="#333" stroke-width="2"/>
+                            <path d="M40 120 L80 160" stroke="#333" stroke-width="10" stroke-linecap="round"/>
+                            <circle cx="40" cy="120" r="10" fill="#94a3b8" stroke="#333" stroke-width="4"/>
+                        </svg>
+                        <div class="absolute top-6 right-10 bg-gray-800 text-white px-4 py-1 font-[900] text-lg transform -rotate-6">開發中</div>
+                    </div>
+                    <div class="p-10 text-center flex-grow flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-3xl font-[900] text-gray-800 mb-3">五金尋寶隊</h2>
+                            <p class="text-cyan-700 font-[700] mb-8 text-base leading-relaxed px-2">
+                                關於五金，五金海運過程跟著黃色小鴨沉入海底，正在打撈中～
+                            </p>
+                        </div>
+                        <button onclick="openGame('#')" 
+                           class="btn-cartoon block w-full bg-gray-400 text-white py-4 rounded-2xl font-[900] text-2xl shadow-gray-600 cursor-not-allowed">
+                            打撈五金中
                         </button>
                     </div>
                 </div>
@@ -289,7 +371,7 @@
     <script>
         function openGame(url) {
             if (url === '#') {
-                alert('遊戲連結準備中，敬請期待！');
+                alert('這個遊樂設施正在維修中（開發中），敬請期待！');
                 return;
             }
             const overlay = document.getElementById('game-overlay');
