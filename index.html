@@ -160,7 +160,7 @@
 
     <!-- 遊戲主舞台 -->
     <main class="flex-grow flex items-center justify-center p-6 relative z-20 mb-28 mt-8">
-        <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-16">
+        <div class="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             
             <!-- 遊戲 1: 大富翁 -->
             <div class="group bouncy-hover">
@@ -177,13 +177,13 @@
                     </div>
                     <div class="p-10 text-center flex-grow flex flex-col justify-between">
                         <div>
-                            <h2 class="text-4xl font-[900] text-gray-800 mb-3">預拌大富翁</h2>
-                            <p class="text-orange-600 font-[700] mb-8 text-lg leading-relaxed px-4">
+                            <h2 class="text-3xl font-[900] text-gray-800 mb-3">預拌大富翁</h2>
+                            <p class="text-orange-600 font-[700] mb-8 text-base leading-relaxed px-2">
                                 結合預拌廠營運與大富翁經典玩法，透過娛樂方式學習預拌設備知識
                             </p>
                         </div>
                         <button onclick="openGame('https://twr1991-bot.github.io/Monopoly-game/')" 
-                           class="btn-cartoon block w-full bg-orange-500 text-white py-5 rounded-2xl font-[900] text-3xl shadow-orange-800 active:bg-orange-600">
+                           class="btn-cartoon block w-full bg-orange-500 text-white py-4 rounded-2xl font-[900] text-2xl shadow-orange-800 active:bg-orange-600">
                             出發囉 ➔
                         </button>
                     </div>
@@ -205,14 +205,44 @@
                     </div>
                     <div class="p-10 text-center flex-grow flex flex-col justify-between">
                         <div>
-                            <h2 class="text-4xl font-[900] text-gray-800 mb-3">設備對對碰</h2>
-                            <p class="text-emerald-600 font-[700] mb-8 text-lg leading-relaxed px-4">
+                            <h2 class="text-3xl font-[900] text-gray-800 mb-3">設備對對碰</h2>
+                            <p class="text-emerald-600 font-[700] mb-8 text-base leading-relaxed px-2">
                                 預拌設備多重複雜搭配記憶的遊戲方式，讓你真正感受精神衰弱，再也忘不掉設備的樣子
                             </p>
                         </div>
                         <button onclick="openGame('https://twr1991-bot.github.io/Turn-Cards-game/')" 
-                           class="btn-cartoon block w-full bg-emerald-500 text-white py-5 rounded-2xl font-[900] text-3xl shadow-emerald-800 active:bg-emerald-600">
+                           class="btn-cartoon block w-full bg-emerald-500 text-white py-4 rounded-2xl font-[900] text-2xl shadow-emerald-800 active:bg-emerald-600">
                             開始玩 ➔
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 遊戲 3: 混凝土特調飲料店 -->
+            <div class="group bouncy-hover">
+                <div class="ticket-shape cartoon-border bg-white overflow-hidden flex flex-col h-full">
+                    <div class="h-60 bg-purple-400 flex items-center justify-center relative border-b-4 border-black border-dashed">
+                        <!-- 自定義圖標：特調飲料 -->
+                        <svg viewBox="0 0 200 200" class="w-44 h-44 drop-shadow-[6px_6px_0px_rgba(0,0,0,0.2)]">
+                            <path d="M60 40 L140 40 L125 160 L75 160 Z" fill="#fff" stroke="#333" stroke-width="10"/>
+                            <path d="M68 55 L132 55 L120 145 L80 145 Z" fill="#94a3b8" />
+                            <rect x="115" y="10" width="10" height="60" rx="5" fill="#ef4444" stroke="#333" stroke-width="4" transform="rotate(-15 115 10)"/>
+                            <circle cx="90" cy="80" r="10" fill="#64748b"/>
+                            <circle cx="110" cy="110" r="10" fill="#64748b"/>
+                            <circle cx="85" cy="130" r="10" fill="#64748b"/>
+                        </svg>
+                        <div class="absolute top-6 right-10 bg-black text-white px-4 py-1 font-[900] text-lg transform rotate-6">烹飪模擬</div>
+                    </div>
+                    <div class="p-10 text-center flex-grow flex flex-col justify-between">
+                        <div>
+                            <h2 class="text-3xl font-[900] text-gray-800 mb-3">特調飲料店</h2>
+                            <p class="text-purple-600 font-[700] mb-8 text-base leading-relaxed px-2">
+                                化身混凝土特調師，在限時挑戰中完成各種訂單，從遊戲中學習混凝土原料配比
+                            </p>
+                        </div>
+                        <button onclick="openGame('#')" 
+                           class="btn-cartoon block w-full bg-purple-500 text-white py-4 rounded-2xl font-[900] text-2xl shadow-purple-800 active:bg-purple-600">
+                            開張囉 ➔
                         </button>
                     </div>
                 </div>
@@ -258,17 +288,21 @@
 
     <script>
         function openGame(url) {
+            if (url === '#') {
+                alert('遊戲連結準備中，敬請期待！');
+                return;
+            }
             const overlay = document.getElementById('game-overlay');
             const iframe = document.getElementById('game-frame');
             iframe.src = url;
             overlay.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // 防止背景滾動
+            document.body.style.overflow = 'hidden'; 
         }
 
         function closeGame() {
             const overlay = document.getElementById('game-overlay');
             const iframe = document.getElementById('game-frame');
-            iframe.src = ''; // 停止遊戲
+            iframe.src = ''; 
             overlay.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
